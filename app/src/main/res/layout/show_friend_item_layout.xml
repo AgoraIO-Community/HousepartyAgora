@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/text_show_friend_name"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            />
+
+        <Button
+            android:id="@+id/btn_join_friend"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:text="Join"
+            />
+        <Button
+            android:id="@+id/btn_chat_friend"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:text="Chat"
+            />
+    </LinearLayout>
+
+</LinearLayout>

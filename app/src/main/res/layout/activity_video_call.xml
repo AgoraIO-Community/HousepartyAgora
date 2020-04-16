@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".acitivities.VideoCallActivity">
+
+    <com.example.housepartyagora.layout.GridVideoViewContainer
+        android:id="@+id/grid_video_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.example.housepartyagora.layout.GridVideoViewContainer>
+
+    <ViewStub
+        android:id="@+id/small_video_view_dock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:inflatedId="@id/small_video_view_dock"
+        android:layout="@layout/small_video_view_dock" />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/btn_show_friends"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:onClick="onShowFriendClick"
+        />
+
+    <LinearLayout
+        android:id="@+id/layout_show_friends"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:background="#F1F1F1"
+        android:layout_marginTop="120dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Agora Houseparty"
+            android:textSize="20dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="20dp"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_show_friendList"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/btn_add_friends"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:onClick="onAddFriendClick"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/layout_add_friends"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:background="#F1F1F1"
+        android:layout_marginTop="120dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Bring Friends Here"
+            android:textSize="20dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="20dp"
+            />
+
+        <EditText
+            android:id="@+id/et_search_friends"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Search by Name"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:layout_marginLeft="200dp"
+            android:onClick="onSearchButtonClick"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_friendList"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_chat"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:id="@+id/message_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:padding="15dp"/>
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_close_black_24dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:onClick="onChatCloseClicked"/>
+
+        <TextView
+            android:id="@+id/selection_chat_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onClickSend"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textColor="@color/white"
+            android:background="@color/blue"
+            android:text="@string/str_send" />
+        <EditText
+            android:id="@+id/message_edittiext"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"
+            android:hint="@string/single_input"
+            android:background="@color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/selection_chat_btn"
+            android:lines="1"
+            android:padding="5dp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/message_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/message_title"
+            android:layout_above="@+id/message_edittiext"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/control_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/control_bottom_margin">
+
+        <ImageView
+            android:id="@+id/start_call_end_call_btn"
+            android:layout_width="@dimen/call_button_size"
+            android:layout_height="@dimen/call_button_size"
+            android:onClick="onCallClicked"
+            android:layout_centerInParent="true"
+            android:src="@drawable/btn_endcall"
+            android:scaleType="centerCrop"/>
+
+        <ImageView
+            android:id="@+id/switch_camera_btn"
+            android:layout_width="@dimen/other_button_size"
+            android:layout_height="@dimen/other_button_size"
+
+            android:layout_toLeftOf="@id/start_call_end_call_btn"
+            android:layout_toStartOf="@id/start_call_end_call_btn"
+            android:layout_marginRight="@dimen/control_bottom_horizontal_margin"
+
+            android:layout_centerVertical="true"
+            android:onClick="onSwitchCameraClicked"
+            android:src="@drawable/btn_switch_camera"
+            android:scaleType="centerCrop"/>
+
+        <ImageView
+            android:id="@+id/audio_mute_audio_unmute_btn"
+            android:layout_width="@dimen/other_button_size"
+            android:layout_height="@dimen/other_button_size"
+            android:layout_toRightOf="@id/start_call_end_call_btn"
+            android:layout_toEndOf="@id/start_call_end_call_btn"
+            android:layout_marginLeft="@dimen/control_bottom_horizontal_margin"
+
+            android:layout_centerVertical="true"
+            android:onClick="onLocalAudioMuteClicked"
+            android:src="@drawable/btn_unmute"
+            android:scaleType="centerCrop"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
