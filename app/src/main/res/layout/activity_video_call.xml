@@ -26,7 +26,7 @@
         android:src="@drawable/btn_show_friends"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:onClick="onShowFriendClick"
+        android:onClick="onShowFriendListClick"
         />
 
     <LinearLayout
@@ -182,9 +182,9 @@
             android:id="@+id/start_call_end_call_btn"
             android:layout_width="@dimen/call_button_size"
             android:layout_height="@dimen/call_button_size"
-            android:onClick="onCallClicked"
+            android:onClick="onLockRoomClick"
             android:layout_centerInParent="true"
-            android:src="@drawable/btn_endcall"
+            android:src="@drawable/ic_close_black_24dp"
             android:scaleType="centerCrop"/>
 
         <ImageView

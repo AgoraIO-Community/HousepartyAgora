@@ -15,7 +15,6 @@ import io.agora.rtm.SendMessageOptions;
 
 
 public class ChatManager {
-    private static final String TAG = ChatManager.class.getSimpleName();
 
     private Context mContext;
     private RtmClient mRtmclient;
@@ -81,10 +80,6 @@ public class ChatManager {
 
     public SendMessageOptions getSendMessageOptions() {
         return mSendMsgOptions;
-    }
-
-    public boolean isOfflineMessageEnabled() {
-        return mSendMsgOptions.enableOfflineMessaging;
     }
 
     public void enableOfflineMessage(boolean enabled) {

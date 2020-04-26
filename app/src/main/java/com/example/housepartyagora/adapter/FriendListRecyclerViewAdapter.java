@@ -10,16 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.housepartyagora.R;
-import com.example.housepartyagora.model.Friend;
+import com.example.housepartyagora.model.DBUser;
 
 import java.util.List;
 
 public class FriendListRecyclerViewAdapter extends RecyclerView.Adapter<FriendListRecyclerViewAdapter.ViewHolder> {
 
-    List<Friend> friendList;
+    List<DBUser> friendList;
     private static ClickListener clickListener;
 
-    public FriendListRecyclerViewAdapter(List<Friend> list) {
+    public FriendListRecyclerViewAdapter(List<DBUser> list) {
         friendList = list;
     }
 
@@ -32,8 +32,8 @@ public class FriendListRecyclerViewAdapter extends RecyclerView.Adapter<FriendLi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final Friend friend = friendList.get(position);
-        holder.friendName.setText(friend.getUserName());
+        final DBUser friend = friendList.get(position);
+        holder.friendName.setText(friend.getName());
     }
 
     @Override

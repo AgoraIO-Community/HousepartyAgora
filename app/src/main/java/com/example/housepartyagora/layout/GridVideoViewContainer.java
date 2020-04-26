@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.housepartyagora.model.UserStatusData;
-import com.example.housepartyagora.model.VideoInfoData;
 
 import java.util.HashMap;
 
@@ -69,27 +68,6 @@ public class GridVideoViewContainer extends RecyclerView {
 
     private int getNearestSqrt(int n) {
         return (int) Math.sqrt(n);
-    }
-
-    public void notifyUiChanged(HashMap<Integer, SurfaceView> uids, int localUid, HashMap<Integer, Integer> status, HashMap<Integer, Integer> volume) {
-        if (mGridVideoViewContainerAdapter == null) {
-            return;
-        }
-        mGridVideoViewContainerAdapter.notifyUiChanged(uids, localUid, status, volume);
-    }
-
-    public void addVideoInfo(int uid, VideoInfoData video) {
-        if (mGridVideoViewContainerAdapter == null) {
-            return;
-        }
-        mGridVideoViewContainerAdapter.addVideoInfo(uid, video);
-    }
-
-    public void cleanVideoInfo() {
-        if (mGridVideoViewContainerAdapter == null) {
-            return;
-        }
-        mGridVideoViewContainerAdapter.cleanVideoInfo();
     }
 
     public UserStatusData getItem(int position) {

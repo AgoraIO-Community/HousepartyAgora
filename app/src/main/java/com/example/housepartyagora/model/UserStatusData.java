@@ -9,10 +9,6 @@ public class UserStatusData {
 
     public static final int DEFAULT_VOLUME = 0;
 
-    public UserStatusData(int uid, SurfaceView view, Integer status, int volume) {
-        this(uid, view, status, volume, null);
-    }
-
     public UserStatusData(int uid, SurfaceView view, Integer status, int volume, VideoInfoData i) {
         this.mUid = uid;
         this.mView = view;

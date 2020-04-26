@@ -9,12 +9,7 @@ import java.util.List;
 import java.util.Random;
 
 public class MessageUtil {
-    public static final int MAX_INPUT_NAME_LENGTH = 64;
     public static final int ACTIVITY_RESULT_CONN_ABORTED = 1;
-
-    public static final String INTENT_EXTRA_IS_PEER_MODE = "chatMode";
-    public static final String INTENT_EXTRA_USER_ID = "user";
-    public static final String INTENT_EXTRA_TARGET_NAME = "targetName";
 
     private static List<MessageListBean> messageListBeanList = new ArrayList<>();
 
@@ -29,9 +24,6 @@ public class MessageUtil {
             R.drawable.shape_circle_red
     };
 
-    public static void cleanMessageListBeanList() {
-        messageListBeanList.clear();
-    }
     public static void addMessageListBeanList(MessageListBean messageListBean) {
         messageListBeanList.add(messageListBean);
     }

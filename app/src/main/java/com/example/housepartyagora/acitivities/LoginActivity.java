@@ -20,10 +20,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginNextClick(View view) {
         EditText userNameEditText = findViewById(R.id.et_login_user_name);
-        EditText passwordEditText = findViewById(R.id.et_login_password);
         String userName = userNameEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
-        //todo: check password
 
         if(userName == null || userName == "") {
             Toast.makeText(this, "user name cannot be empty", Toast.LENGTH_SHORT).show();

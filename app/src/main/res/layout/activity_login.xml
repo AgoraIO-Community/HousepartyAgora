@@ -25,6 +25,15 @@
         android:layout_marginTop="43dp"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="This is a demo app, you only need to enter Username."
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="83dp"
+        />
+
     <EditText
         android:id="@+id/et_login_user_name"
         android:layout_width="300dp"

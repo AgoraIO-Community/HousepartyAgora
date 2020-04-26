@@ -12,7 +12,6 @@ import com.example.housepartyagora.model.UserStatusData;
 import com.example.housepartyagora.model.VideoInfoData;
 import com.example.housepartyagora.model.VideoUserStatusHolder;
 import com.example.housepartyagora.utils.Constant;
-import com.example.housepartyagora.utils.ViewUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -172,7 +171,9 @@ public class VideoViewAdapterUtil {
 
         if (Constant.SHOW_VIDEO_INFO && user.getVideoInfoData() != null) {
             VideoInfoData videoInfo = user.getVideoInfoData();
-            myHolder.mMetaData.setText(ViewUtil.composeVideoInfoString(context, videoInfo));
+            myHolder.mMetaData.setText(videoInfo.mWidth + "x" + videoInfo.mHeight + ", "
+                    + context.getString(R.string.frame_rate_value_with_unit, videoInfo.mFrameRate) + ", "
+                    + context.getString(R.string.bit_rate_value_with_unit, videoInfo.mBitRate));
             myHolder.mVideoInfo.setVisibility(View.VISIBLE);
         } else {
             myHolder.mVideoInfo.setVisibility(View.GONE);

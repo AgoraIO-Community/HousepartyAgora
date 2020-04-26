@@ -5,7 +5,6 @@ import io.agora.rtc.RtcEngine;
 public class Constant {
 
     public static final String MEDIA_SDK_VERSION;
-
     static {
         String sdk = "undefined";
         try {
@@ -16,6 +15,7 @@ public class Constant {
     }
 
     public static boolean SHOW_VIDEO_INFO = true;
-    public static final int CHAT_REQUEST_CODE = 1;
 
+    public static final String USER_STATE_OPEN = "Open";
+    public static final String USER_STATE_LOCK = "Lock";
 }

@@ -18,10 +18,6 @@ public class VideoInfoData {
         this.mCodec = codec;
     }
 
-    public VideoInfoData(int width, int height, int delay, int frameRate, int bitRate) {
-        this(width, height, delay, frameRate, bitRate, 0);
-    }
-
     @Override
     public String toString() {
         return "VideoInfoData{" +

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">AgoraHouseparty</string>
-    <string name="agora_app_id">808f14eae6d24d3384f951134619c258</string>
+    <string name="agora_app_id">#YOUR APP ID#</string>
 
     <string name="account_cannot_be_yourself">Account can not be yourself</string>
     <string name="account_empty">Account can not be empty</string>
