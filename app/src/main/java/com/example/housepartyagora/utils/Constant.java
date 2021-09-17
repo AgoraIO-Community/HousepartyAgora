@@ -1,6 +1,6 @@
 package com.example.housepartyagora.utils;
 
-import io.agora.rtc.RtcEngine;
+import io.agora.rtc2.RtcEngine;
 
 public class Constant {
 

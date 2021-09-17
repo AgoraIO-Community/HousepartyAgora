@@ -52,14 +52,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import io.agora.rtc.Constants;
-import io.agora.rtc.IRtcEngineEventHandler;
-import io.agora.rtc.RtcEngine;
-import io.agora.rtc.video.VideoCanvas;
+import io.agora.rtc2.RtcEngine;
+import io.agora.rtc2.Constants;
+import io.agora.rtc2.IRtcEngineEventHandler;
+import io.agora.rtc2.video.VideoCanvas;
 import io.agora.rtm.ErrorInfo;
 import io.agora.rtm.ResultCallback;
 import io.agora.rtm.RtmClient;
 import io.agora.rtm.RtmClientListener;
+import io.agora.rtm.RtmFileMessage;
+import io.agora.rtm.RtmImageMessage;
+import io.agora.rtm.RtmMediaOperationProgress;
 import io.agora.rtm.RtmMessage;
 import io.agora.rtm.RtmStatusCode;
 
@@ -132,18 +135,6 @@ public class VideoCallActivity extends AppCompatActivity {public static final in
             });
         }
 
-        @Override
-        // Listen for the onFirstRemoteVideoDecoded callback.
-        // This callback occurs when the first video frame of a remote user is received and decoded after the remote user successfully joins the channel.
-        // You can call the setupRemoteVideo method in this callback to set up the remote video view.
-        public void onFirstRemoteVideoDecoded(final int uid, int width, int height, int elapsed) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    setupRemoteVideo(uid);
-                }
-            });
-        }
 
         @Override
         // Listen for the onUserOffline callback.
@@ -154,6 +145,19 @@ public class VideoCallActivity extends AppCompatActivity {public static final in
                 public void run() {
                     showToast("User: " + uid + " left the room.");
                     onRemoteUserLeft(uid);
+                }
+            });
+        }
+
+        @Override
+        // Listen for the onUserJoined callback.
+        // This callback occurs everytime a remote user joins the channel.
+        // You can call the setupRemoteVideo method in this callback to set up the remote video view.
+        public void onUserJoined(int uid, int elapsed) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    setupRemoteVideo(uid);
                 }
             });
         }
@@ -269,6 +273,7 @@ public class VideoCallActivity extends AppCompatActivity {public static final in
         initializeEngine();
         loginRTM();
         setupLocalVideo();
+        mRtcEngine.startPreview();
         joinChannel();
     }
 
@@ -309,7 +314,7 @@ public class VideoCallActivity extends AppCompatActivity {public static final in
                 mRtcEngine.enableInEarMonitoring(true);
                 mRtcEngine.setInEarMonitoringVolume(80);
 
-                SurfaceView surfaceView = RtcEngine.CreateRendererView(getBaseContext());
+                SurfaceView surfaceView = new SurfaceView(getBaseContext());
                 mRtcEngine.setupLocalVideo(new VideoCanvas(surfaceView, VideoCanvas.RENDER_MODE_HIDDEN, 0));
                 surfaceView.setZOrderOnTop(false);
                 surfaceView.setZOrderMediaOverlay(false);
@@ -448,7 +453,7 @@ public class VideoCallActivity extends AppCompatActivity {public static final in
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                SurfaceView mRemoteView = RtcEngine.CreateRendererView(getApplicationContext());
+                SurfaceView mRemoteView = new SurfaceView(getBaseContext());
 
                 mUidsList.put(uid, mRemoteView);
                 mRemoteView.setZOrderOnTop(true);
@@ -490,6 +495,7 @@ public class VideoCallActivity extends AppCompatActivity {public static final in
     protected void onDestroy() {
         super.onDestroy();
         if (isCalling) {
+            mRtcEngine.stopPreview();
             leaveChannel();
         }
         RtcEngine.destroy();
@@ -536,6 +542,7 @@ public class VideoCallActivity extends AppCompatActivity {public static final in
 
     private void startCalling() {
         setupLocalVideo();
+        mRtcEngine.startPreview();
         joinChannel();
     }
 
@@ -812,6 +819,26 @@ public class VideoCallActivity extends AppCompatActivity {public static final in
                     }
                 }
             });
+        }
+
+        @Override
+        public void onImageMessageReceivedFromPeer(RtmImageMessage rtmImageMessage, String s) {
+
+        }
+
+        @Override
+        public void onFileMessageReceivedFromPeer(RtmFileMessage rtmFileMessage, String s) {
+
+        }
+
+        @Override
+        public void onMediaUploadingProgress(RtmMediaOperationProgress rtmMediaOperationProgress, long l) {
+
+        }
+
+        @Override
+        public void onMediaDownloadingProgress(RtmMediaOperationProgress rtmMediaOperationProgress, long l) {
+
         }
 
         @Override

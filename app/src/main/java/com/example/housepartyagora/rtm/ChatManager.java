@@ -10,6 +10,9 @@ import java.util.Map;
 
 import io.agora.rtm.RtmClient;
 import io.agora.rtm.RtmClientListener;
+import io.agora.rtm.RtmFileMessage;
+import io.agora.rtm.RtmImageMessage;
+import io.agora.rtm.RtmMediaOperationProgress;
 import io.agora.rtm.RtmMessage;
 import io.agora.rtm.SendMessageOptions;
 
@@ -51,6 +54,26 @@ public class ChatManager {
                             listener.onMessageReceived(rtmMessage, peerId);
                         }
                     }
+                }
+
+                @Override
+                public void onImageMessageReceivedFromPeer(RtmImageMessage rtmImageMessage, String s) {
+
+                }
+
+                @Override
+                public void onFileMessageReceivedFromPeer(RtmFileMessage rtmFileMessage, String s) {
+
+                }
+
+                @Override
+                public void onMediaUploadingProgress(RtmMediaOperationProgress rtmMediaOperationProgress, long l) {
+
+                }
+
+                @Override
+                public void onMediaDownloadingProgress(RtmMediaOperationProgress rtmMediaOperationProgress, long l) {
+
                 }
 
                 @Override
